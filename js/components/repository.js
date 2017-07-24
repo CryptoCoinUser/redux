@@ -26,10 +26,13 @@ export class Repository extends React.Component {
     render() {
         return (
             <div className="repository">
-                {this.props.repository.name} - <em>{this.props.repository.description}</em>
+                <a href={this.props.repository.html_url}>{this.props.repository.name}</a> - <em>{this.props.repository.description}</em>
                 &nbsp;
-                <StarRater rating={this.props.repository.rating}
-                           onChange={this.changeRating} />
+                
+                <StarRater 
+                    rating={this.props.repository.rating}
+                    onChange={this.changeRating} 
+                />
             </div>
         );
     }

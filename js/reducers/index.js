@@ -37,7 +37,8 @@ export const repositoryReducer = (state=initialRepositoryState, action) => {
         const before = state.slice(0, index);
         const after = state.slice(index + 1);
         const newRepository = Object.assign({}, state[index], {
-            description: action.description
+            description: action.description,
+            html_url: action.html_url
         });
         return [...before, newRepository, ...after];
     }

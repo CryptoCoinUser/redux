@@ -27,7 +27,8 @@ export class RepositoryList extends React.Component {
             <div className="repository-list">
                 <h4>Enter User/repo to lookup description on https://api.github.com/repos/ </h4>
                 {repositories}
-                <input type="text" ref={ref => this.repositoryNameInput = ref} />
+                <input type="text" ref={ref => this.repositoryNameInput = ref}
+                value="bitcoin/bitcoin" />
                 <button type="button" onClick={this.addRepository}>
                     Add repository
                 </button>

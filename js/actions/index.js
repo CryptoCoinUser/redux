@@ -15,10 +15,11 @@ export const rateRepository = (repository, rating) => ({
 
 
 export const FETCH_DESCRIPTION_SUCCESS = 'FETCH_DESCRIPTION_SUCCESS';
-export const fetchDescriptionSuccess = (repository, description) => ({
+export const fetchDescriptionSuccess = (repository, description, html_url) => ({
     type: FETCH_DESCRIPTION_SUCCESS,
     repository,
-    description
+    description,
+    html_url
 });
 
 export const FETCH_DESCRIPTION_ERROR= 'FETCH_DESCRIPTION_ERROR';
@@ -40,8 +41,11 @@ export const fetchDescription = repository => dispatch => {
         return response;
     })
     .then(response => response.json())
-    .then(data =>
-        dispatch(fetchDescriptionSuccess(repository, data.description))
+    .then(data => {
+        console.log(data.html_url);
+        return dispatch(fetchDescriptionSuccess(repository, data.description, data.html_url))
+        
+        }
     )
     .catch(error =>
         dispatch(fetchDescriptionError(repository, error))
